@@ -1,0 +1,11 @@
+<ng-container [ngSwitch]="target">
+    <ng-container *ngSwitchCase="null">
+        <span class="stat">{{stat}}</span>
+        <span class="label">{{label}}</span>
+    </ng-container>
+    <a [href]="target" *ngSwitchDefault>
+        <span class="stat">{{stat}}</span>
+        <span class="label">{{label}}</span>
+    </a>
+</ng-container>
+

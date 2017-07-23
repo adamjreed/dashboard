@@ -1,0 +1,55 @@
+@import './shared/styles/mixins';
+
+.col {
+  width: 50%;
+  float: left;
+}
+
+h1.context {
+  background-color: @color-base;
+  color: #fff;
+  font-size: 1em;
+  line-height: 1;
+  padding: 22px 0;
+  text-align: center;
+  margin: 0;
+}
+
+.highlights {
+  .clearfix;
+  .stacked;
+
+  li {
+    background-color: @color-highlight;
+  }
+}
+
+.slices {
+  .clearfix;
+  .inline;
+
+  .bg-loop (@i) when (@i > 0) {
+    li:nth-child(@{i}) {
+      background-color: lighten(@color-slices, ((@i * 10) - 10));
+    }
+    .bg-loop(@i - 1);
+  }
+  .bg-loop (5);
+}
+
+@media(max-width: 500px) {
+  .col {
+    width: 100%;
+    float: none;
+  }
+
+  li {
+    width: 100%;
+    float: none;
+    box-sizing: border-box;
+  }
+
+  .slices {
+    .stacked;
+  }
+}

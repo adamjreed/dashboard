@@ -1,0 +1,31 @@
+<div class="container">
+    <section class="col col1">
+        <h1 class="context">{{context}}</h1>
+        <ul class="block-list highlights">
+            <li *ngFor="let highlight of highlights">
+                <stat
+                        [stat]="highlight.value"
+                        [label]="highlight.name"
+                        [target]="highlight.detailName"
+                ></stat>
+            </li>
+        </ul>
+    </section>
+    <section class="col col2">
+        <ul class="block-list slices">
+            <li *ngFor="let slice of slices">
+                <stat
+                        [stat]="slice.value"
+                        [label]="slice.name"
+                        [target]="slice.detailName"
+                ></stat>
+
+            </li>
+        </ul>
+        <chart *ngIf="chartData.data.length != 0"
+                [centerLabel]="chartLabel"
+                [labels]="chartData.labels"
+                [data]="chartData.data"
+        ></chart>
+    </section>
+</div>
